@@ -1,0 +1,83 @@
+aid: honeybadger
+name: Honeybadger
+description: >-
+  Honeybadger is an application monitoring platform that combines exception
+  tracking, uptime monitoring, cron and background job monitoring, and
+  status pages into a single service for software developers and operations
+  teams. The platform supports a wide range of languages and frameworks
+  including Ruby, Rails, Python, Node.js, PHP, Elixir, Go, and JavaScript,
+  and integrates with Slack, GitHub, PagerDuty, and other developer tools.
+  Honeybadger exposes a Reporting API for ingesting errors, deploys, and
+  check-ins, plus a Data API for accessing account data, both using HTTP
+  Basic authentication.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Error Monitoring
+  - Exception Tracking
+  - Application Performance Monitoring
+  - Uptime Monitoring
+  - Cron Monitoring
+  - Observability
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: honeybadger:reporting-api
+    name: Honeybadger Reporting API
+    description: >-
+      Ingestion API for submitting exceptions, deploys, check-ins, source
+      maps, and events from instrumented applications to Honeybadger. Uses
+      a Project API Key as the authentication credential and accepts JSON
+      payloads over HTTPS.
+    humanURL: https://docs.honeybadger.io/api/
+    baseURL: https://api.honeybadger.io/v1
+    tags:
+      - Error Monitoring
+      - Exception Tracking
+      - Reporting API
+      - Ingestion
+    properties:
+      - type: Documentation
+        url: https://docs.honeybadger.io/api/
+  - aid: honeybadger:data-api
+    name: Honeybadger Data API
+    description: >-
+      REST API for reading and modifying account data such as projects,
+      faults, comments, teams, and integrations. Authenticated via HTTP
+      Basic auth using a Personal Authentication Token as the username.
+    humanURL: https://docs.honeybadger.io/api/getting-started/
+    baseURL: https://app.honeybadger.io
+    tags:
+      - Error Monitoring
+      - Data API
+      - HTTP Basic Auth
+      - Personal Authentication Token
+    properties:
+      - type: Documentation
+        url: https://docs.honeybadger.io/api/getting-started/
+
+common:
+  - type: Website
+    url: https://www.honeybadger.io
+  - type: Documentation
+    url: https://docs.honeybadger.io
+  - type: Pricing
+    url: https://www.honeybadger.io/plans/
+  - type: Sign Up
+    url: https://app.honeybadger.io/users/sign_up
+  - type: Blog
+    url: https://www.honeybadger.io/blog/
+  - type: GitHub Organization
+    url: https://github.com/honeybadger-io
+  - type: GitHub SDK
+    url: https://github.com/honeybadger-io/cli
+  - type: Support
+    url: mailto:support@honeybadger.io
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/honeybadger-industries
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
