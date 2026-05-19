@@ -22,7 +22,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-11'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
   - aid: honeybadger:reporting-api
@@ -78,6 +78,9 @@ common:
     url: mailto:support@honeybadger.io
   - type: LinkedIn
     url: https://www.linkedin.com/company/honeybadger-industries
+  - name: MCP Server
+    url: https://github.com/honeybadger-io/honeybadger-mcp-server
+    type: MCPServer
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
