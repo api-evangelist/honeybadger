@@ -81,6 +81,8 @@ common:
   - name: MCP Server
     url: https://github.com/honeybadger-io/honeybadger-mcp-server
     type: MCPServer
+  - type: LLMsTxt
+    url: https://docs.honeybadger.io/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
