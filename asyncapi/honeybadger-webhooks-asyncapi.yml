@@ -1,0 +1,602 @@
+asyncapi: '2.6.0'
+info:
+  title: Honeybadger Outbound Webhook Notifications
+  version: '1.0.0'
+  description: |
+    AsyncAPI description of the outbound webhook notifications Honeybadger
+    delivers to subscriber URLs that have been configured via Project
+    Settings > Alerts & Integrations. This surface covers the generic
+    Webhook integration, which posts a JSON event body to a user-supplied
+    URL whenever something noteworthy happens in a project (errors,
+    deploys, check-ins, uptime, comments, assignments, certificates).
+
+    The Slack and Microsoft Teams integrations are also modeled here as
+    separate channels because they share the same Honeybadger event
+    lifecycle (occurred/resolved/reopened/assigned/etc.) but deliver to
+    chat-platform webhook URLs. Only the field surface that Honeybadger's
+    public documentation describes is modeled; nothing has been invented.
+
+    Source:
+      - https://docs.honeybadger.io/guides/integrations/webhook/
+      - https://docs.honeybadger.io/guides/integrations/slack/
+      - https://docs.honeybadger.io/guides/integrations/microsoft-teams/
+  contact:
+    name: Honeybadger Support
+    url: https://docs.honeybadger.io/guides/integrations/webhook/
+    email: support@honeybadger.io
+  license:
+    name: Honeybadger Documentation
+    url: https://docs.honeybadger.io
+
+defaultContentType: application/json
+
+servers:
+  subscriber:
+    url: '{webhookUrl}'
+    protocol: https
+    description: |
+      The HTTPS endpoint operated by the integration subscriber. The URL
+      is supplied verbatim by a project administrator in Honeybadger's
+      Project Settings > Alerts & Integrations > Webhook configuration
+      (e.g. https://mysite.com/hook). Honeybadger POSTs each event as a
+      JSON body to this URL.
+    variables:
+      webhookUrl:
+        default: https://example.com/honeybadger-webhook
+        description: Subscriber-provided webhook URL, including protocol.
+
+channels:
+  webhook:
+    description: |
+      Generic Webhook integration. Honeybadger POSTs a JSON body to the
+      configured webhook URL whenever an event fires in the project. The
+      JSON body always contains an `event` string and a human-readable
+      `message`, plus one or more event-specific objects.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      summary: Receive Honeybadger project events on a generic webhook URL.
+      operationId: receiveHoneybadgerWebhookEvent
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Occurred'
+          - $ref: '#/components/messages/Resolved'
+          - $ref: '#/components/messages/Unresolved'
+          - $ref: '#/components/messages/Assigned'
+          - $ref: '#/components/messages/Commented'
+          - $ref: '#/components/messages/RateExceeded'
+          - $ref: '#/components/messages/Deployed'
+          - $ref: '#/components/messages/CheckInMissing'
+          - $ref: '#/components/messages/CheckInReporting'
+          - $ref: '#/components/messages/Down'
+          - $ref: '#/components/messages/Up'
+          - $ref: '#/components/messages/CertWillExpire'
+
+  slack:
+    description: |
+      Slack integration. Honeybadger delivers fault-lifecycle
+      notifications (occurrence, resolution, reopening) to a Slack
+      channel chosen during OAuth setup. Messages include interactive
+      buttons that let recipients resolve or reopen the fault from Slack;
+      Honeybadger's documentation does not publish a wire-level payload
+      schema for this channel, so only the documented lifecycle events
+      are listed.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      summary: Deliver fault lifecycle notifications to Slack.
+      operationId: deliverHoneybadgerSlackNotification
+      message:
+        oneOf:
+          - $ref: '#/components/messages/SlackFaultOccurred'
+          - $ref: '#/components/messages/SlackFaultResolved'
+          - $ref: '#/components/messages/SlackFaultReopened'
+
+  microsoftTeams:
+    description: |
+      Microsoft Teams integration. Honeybadger posts to a Teams Incoming
+      Webhook URL created via Connectors. The documentation confirms the
+      transport (Incoming Webhook URL) but does not enumerate event
+      types or publish a payload schema, so only the connectivity-level
+      message is described.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      summary: Deliver Honeybadger notifications to a Microsoft Teams Incoming Webhook.
+      operationId: deliverHoneybadgerTeamsNotification
+      message:
+        $ref: '#/components/messages/TeamsNotification'
+
+components:
+  messages:
+    Occurred:
+      name: occurred
+      title: Error occurred
+      summary: Fired when a new error (fault) is detected in a project.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/OccurredPayload'
+      examples:
+        - name: occurredExample
+          summary: Documented example payload from the Honeybadger webhook guide.
+          payload:
+            event: occurred
+            message: "[Crywolf/test] RuntimeError - oops"
+            fault:
+              id: 3151009
+              project_id: 1717
+              klass: RuntimeError
+              component: null
+              action: null
+              environment: development
+              resolved: true
+              ignored: false
+              created_at: '2014-01-08T18:55:48Z'
+              comments_count: 1
+              message: oops
+              notices_count: 9
+              last_notice_at: '2014-01-08T19:02:21Z'
+
+    Resolved:
+      name: resolved
+      title: Error resolved
+      summary: Fired when a fault is marked resolved.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ResolvedPayload'
+
+    Unresolved:
+      name: unresolved
+      title: Error unresolved
+      summary: Fired when a previously resolved fault recurs.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/UnresolvedPayload'
+
+    Assigned:
+      name: assigned
+      title: Error assigned
+      summary: Fired when a fault is assigned to a user.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/AssignedPayload'
+
+    Commented:
+      name: commented
+      title: Comment added
+      summary: Fired when a comment is added to a fault.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/CommentedPayload'
+
+    RateExceeded:
+      name: rate_exceeded
+      title: Error rate threshold exceeded
+      summary: Fired when a fault's error rate threshold is exceeded.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/RateExceededPayload'
+
+    Deployed:
+      name: deployed
+      title: Deployment recorded
+      summary: Fired when a deployment is recorded against a project.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DeployedPayload'
+
+    CheckInMissing:
+      name: check_in_missing
+      title: Check-in missing
+      summary: Fired when an expected check-in is absent (a missed cron/heartbeat).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/CheckInMissingPayload'
+
+    CheckInReporting:
+      name: check_in_reporting
+      title: Check-in reporting
+      summary: Fired when a previously missing check-in starts reporting again.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/CheckInReportingPayload'
+
+    Down:
+      name: down
+      title: Uptime check down
+      summary: Fired when an uptime check fails (site is down).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DownPayload'
+
+    Up:
+      name: up
+      title: Uptime check up
+      summary: Fired when an uptime check recovers (site is back up).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/UpPayload'
+
+    CertWillExpire:
+      name: cert_will_expire
+      title: SSL certificate expiring
+      summary: Fired when a monitored site's SSL certificate is approaching expiry.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/CertWillExpirePayload'
+
+    SlackFaultOccurred:
+      name: slack.fault.occurred
+      title: Slack notification — fault occurred
+      summary: Fault occurrence delivered to Slack with interactive resolve/reopen buttons.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SlackNotification'
+
+    SlackFaultResolved:
+      name: slack.fault.resolved
+      title: Slack notification — fault resolved
+      summary: Fault resolution delivered to Slack.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SlackNotification'
+
+    SlackFaultReopened:
+      name: slack.fault.reopened
+      title: Slack notification — fault reopened
+      summary: Previously resolved fault reopened, delivered to Slack.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SlackNotification'
+
+    TeamsNotification:
+      name: teams.notification
+      title: Microsoft Teams notification
+      summary: |
+        Notification delivered to a Microsoft Teams Incoming Webhook URL.
+        Honeybadger's documentation confirms the integration uses the
+        Teams Connectors Incoming Webhook transport but does not publish
+        a payload schema or event-type list, so the payload is left
+        opaque here.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TeamsNotificationPayload'
+
+  schemas:
+    EventEnvelope:
+      type: object
+      description: |
+        Common envelope that every Honeybadger webhook payload carries.
+        Each event also includes one or more event-specific objects.
+      required:
+        - event
+        - message
+      properties:
+        event:
+          type: string
+          description: Event type identifier (e.g. `occurred`, `resolved`).
+        message:
+          type: string
+          description: Human-readable description of the event.
+
+    Fault:
+      type: object
+      description: |
+        Fault (error) object. Field set matches the documented example
+        payload from the Honeybadger webhook integration guide.
+      properties:
+        id:
+          type: integer
+          description: Honeybadger fault identifier.
+        project_id:
+          type: integer
+          description: Identifier of the project the fault belongs to.
+        klass:
+          type: string
+          description: Exception class (e.g. `RuntimeError`).
+        component:
+          type: [string, 'null']
+          description: Application component associated with the fault, if any.
+        action:
+          type: [string, 'null']
+          description: Application action associated with the fault, if any.
+        environment:
+          type: string
+          description: Environment name (e.g. `production`, `development`).
+        resolved:
+          type: boolean
+          description: Whether the fault is currently resolved.
+        ignored:
+          type: boolean
+          description: Whether the fault is currently ignored.
+        created_at:
+          type: string
+          format: date-time
+          description: When the fault was first created.
+        comments_count:
+          type: integer
+          description: Number of comments on the fault.
+        message:
+          type: string
+          description: Fault message.
+        notices_count:
+          type: integer
+          description: Number of notices received for this fault.
+        last_notice_at:
+          type: string
+          format: date-time
+          description: When the most recent notice was received.
+
+    Project:
+      type: object
+      description: |
+        Project context for the event. Field set is not enumerated in
+        the public webhook documentation; left open for the documented
+        identifying fields only.
+      additionalProperties: true
+
+    Deploy:
+      type: object
+      description: |
+        Deploy object delivered with `deployed` events. Field set is not
+        enumerated in the public webhook documentation; left open.
+      additionalProperties: true
+
+    CheckIn:
+      type: object
+      description: |
+        Check-in object delivered with `check_in_missing` and
+        `check_in_reporting` events. Field set is not enumerated in the
+        public webhook documentation; left open.
+      additionalProperties: true
+
+    Site:
+      type: object
+      description: |
+        Uptime monitoring site delivered with `down`, `up`, and
+        `cert_will_expire` events. Field set is not enumerated in the
+        public webhook documentation; left open.
+      additionalProperties: true
+
+    Outage:
+      type: object
+      description: |
+        Outage object delivered with `down` and `up` events. Field set is
+        not enumerated in the public webhook documentation; left open.
+      additionalProperties: true
+
+    Comment:
+      type: object
+      description: |
+        Comment object delivered with `commented` events. Field set is
+        not enumerated in the public webhook documentation; left open.
+      additionalProperties: true
+
+    Actor:
+      type: object
+      description: |
+        Honeybadger user who performed the action (e.g. assigner or
+        commenter). Field set is not enumerated in the public webhook
+        documentation; left open.
+      additionalProperties: true
+
+    Assignee:
+      type: object
+      description: |
+        Honeybadger user the fault was assigned to. Field set is not
+        enumerated in the public webhook documentation; left open.
+      additionalProperties: true
+
+    OccurredPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - fault
+          properties:
+            event:
+              const: occurred
+            project:
+              $ref: '#/components/schemas/Project'
+            fault:
+              $ref: '#/components/schemas/Fault'
+            notice:
+              type: object
+              description: |
+                Notice associated with the occurrence. Field set is not
+                enumerated in the public webhook documentation.
+              additionalProperties: true
+
+    ResolvedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - fault
+          properties:
+            event:
+              const: resolved
+            project:
+              $ref: '#/components/schemas/Project'
+            fault:
+              $ref: '#/components/schemas/Fault'
+
+    UnresolvedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - fault
+          properties:
+            event:
+              const: unresolved
+            project:
+              $ref: '#/components/schemas/Project'
+            fault:
+              $ref: '#/components/schemas/Fault'
+
+    AssignedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - fault
+            - assignee
+          properties:
+            event:
+              const: assigned
+            actor:
+              $ref: '#/components/schemas/Actor'
+            fault:
+              $ref: '#/components/schemas/Fault'
+            assignee:
+              $ref: '#/components/schemas/Assignee'
+
+    CommentedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - fault
+            - comment
+          properties:
+            event:
+              const: commented
+            actor:
+              $ref: '#/components/schemas/Actor'
+            fault:
+              $ref: '#/components/schemas/Fault'
+            comment:
+              $ref: '#/components/schemas/Comment'
+
+    RateExceededPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - fault
+          properties:
+            event:
+              const: rate_exceeded
+            project:
+              $ref: '#/components/schemas/Project'
+            fault:
+              $ref: '#/components/schemas/Fault'
+
+    DeployedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - deploy
+          properties:
+            event:
+              const: deployed
+            project:
+              $ref: '#/components/schemas/Project'
+            deploy:
+              $ref: '#/components/schemas/Deploy'
+
+    CheckInMissingPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - check_in
+          properties:
+            event:
+              const: check_in_missing
+            project:
+              $ref: '#/components/schemas/Project'
+            check_in:
+              $ref: '#/components/schemas/CheckIn'
+
+    CheckInReportingPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - check_in
+          properties:
+            event:
+              const: check_in_reporting
+            project:
+              $ref: '#/components/schemas/Project'
+            check_in:
+              $ref: '#/components/schemas/CheckIn'
+
+    DownPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - site
+            - outage
+          properties:
+            event:
+              const: down
+            project:
+              $ref: '#/components/schemas/Project'
+            site:
+              $ref: '#/components/schemas/Site'
+            outage:
+              $ref: '#/components/schemas/Outage'
+
+    UpPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - site
+            - outage
+          properties:
+            event:
+              const: up
+            project:
+              $ref: '#/components/schemas/Project'
+            site:
+              $ref: '#/components/schemas/Site'
+            outage:
+              $ref: '#/components/schemas/Outage'
+
+    CertWillExpirePayload:
+      allOf:
+        - $ref: '#/components/schemas/EventEnvelope'
+        - type: object
+          required:
+            - site
+          properties:
+            event:
+              const: cert_will_expire
+            project:
+              $ref: '#/components/schemas/Project'
+            site:
+              $ref: '#/components/schemas/Site'
+
+    SlackNotification:
+      type: object
+      description: |
+        Notification delivered to Slack via the Honeybadger Slack
+        integration. Honeybadger's public Slack guide describes message
+        content (fault information plus interactive resolve/reopen
+        buttons) but does not publish a wire-level payload schema, so
+        the payload is left open here.
+      additionalProperties: true
+
+    TeamsNotificationPayload:
+      type: object
+      description: |
+        Notification delivered to Microsoft Teams via an Incoming Webhook
+        URL. Honeybadger's public Teams guide does not publish a payload
+        schema or enumerate event types, so the payload is left open
+        here.
+      additionalProperties: true

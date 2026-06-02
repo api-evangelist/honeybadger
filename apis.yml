@@ -22,7 +22,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-19'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: honeybadger:reporting-api
@@ -58,6 +58,35 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.honeybadger.io/api/getting-started/
+  - aid: honeybadger:webhooks
+    name: Honeybadger Outbound Webhook Notifications
+    description: >-
+      Outbound webhook notification surface delivered by Honeybadger to
+      subscriber URLs configured via Project Settings > Alerts &
+      Integrations. Covers the generic Webhook integration's documented
+      event types (occurred, resolved, unresolved, assigned, commented,
+      rate_exceeded, deployed, check_in_missing, check_in_reporting,
+      down, up, cert_will_expire) plus the Slack and Microsoft Teams
+      chat-platform delivery channels.
+    humanURL: https://docs.honeybadger.io/guides/integrations/webhook/
+    baseURL: https://example.com
+    tags:
+      - Webhooks
+      - Notifications
+      - AsyncAPI
+      - Slack
+      - Microsoft Teams
+      - Event-Driven
+    properties:
+      - type: Documentation
+        url: https://docs.honeybadger.io/guides/integrations/webhook/
+      - type: Documentation
+        url: https://docs.honeybadger.io/guides/integrations/slack/
+      - type: Documentation
+        url: https://docs.honeybadger.io/guides/integrations/microsoft-teams/
+      - type: AsyncAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/asyncapi/honeybadger-webhooks-asyncapi.yml
 
 common:
   - type: Website
