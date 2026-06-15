@@ -1,0 +1,624 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Honeybadger API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report an exception",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v1/notices",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "Report an exception"
+    },
+    {
+      "info": {
+        "name": "Submit a check-in for a scheduled task",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v1/check_in/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "Submit a check-in for a scheduled task"
+    },
+    {
+      "info": {
+        "name": "Record a deploy",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v1/deploys",
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "Record a deploy"
+    },
+    {
+      "info": {
+        "name": "Upload source maps for JavaScript",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v1/source_maps",
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "Upload source maps for JavaScript"
+    },
+    {
+      "info": {
+        "name": "Send custom events",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v1/events",
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "Send custom events"
+    },
+    {
+      "info": {
+        "name": "List projects",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects",
+        "params": [
+          {
+            "name": "account_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List projects"
+    },
+    {
+      "info": {
+        "name": "Create a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects",
+        "params": [
+          {
+            "name": "account_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Create a project"
+    },
+    {
+      "info": {
+        "name": "Get a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a project"
+    },
+    {
+      "info": {
+        "name": "Update a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.honeybadger.io/v2/projects/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Update a project"
+    },
+    {
+      "info": {
+        "name": "Delete a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.honeybadger.io/v2/projects/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a project"
+    },
+    {
+      "info": {
+        "name": "Count error occurrences across all projects",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/occurrences"
+      },
+      "docs": "Count error occurrences across all projects"
+    },
+    {
+      "info": {
+        "name": "Count error occurrences for a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id/occurrences",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Count error occurrences for a project"
+    },
+    {
+      "info": {
+        "name": "List project integrations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id/integrations",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List project integrations"
+    },
+    {
+      "info": {
+        "name": "Error counts grouped by exception class",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id/reports/notices_by_class",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Error counts grouped by exception class"
+    },
+    {
+      "info": {
+        "name": "Error counts grouped by location",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id/reports/notices_by_location",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Error counts grouped by location"
+    },
+    {
+      "info": {
+        "name": "Error counts grouped by affected user",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id/reports/notices_by_user",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Error counts grouped by affected user"
+    },
+    {
+      "info": {
+        "name": "Error counts grouped by day",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:id/reports/notices_per_day",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Error counts grouped by day"
+    },
+    {
+      "info": {
+        "name": "List faults",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List faults"
+    },
+    {
+      "info": {
+        "name": "Get a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a fault"
+    },
+    {
+      "info": {
+        "name": "Update a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Update a fault"
+    },
+    {
+      "info": {
+        "name": "Delete a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a fault"
+    },
+    {
+      "info": {
+        "name": "Fault summary counts grouped by environment and status",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/summary",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Fault summary counts grouped by environment and status"
+    },
+    {
+      "info": {
+        "name": "Get occurrence counts for a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/occurrences",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get occurrence counts for a fault"
+    },
+    {
+      "info": {
+        "name": "Pause notifications for a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/pause",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Pause notifications for a fault"
+    },
+    {
+      "info": {
+        "name": "Unpause a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/unpause",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Unpause a fault"
+    },
+    {
+      "info": {
+        "name": "Unpause all faults in a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/unpause",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Unpause all faults in a project"
+    },
+    {
+      "info": {
+        "name": "Resolve all faults in a project",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/resolve",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Resolve all faults in a project"
+    },
+    {
+      "info": {
+        "name": "Link a fault to an external issue (GitHub, Pivotal, etc.)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/link",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Link a fault to an external issue (GitHub, Pivotal, etc.)"
+    },
+    {
+      "info": {
+        "name": "Unlink a fault from its external issue",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/unlink",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Unlink a fault from its external issue"
+    },
+    {
+      "info": {
+        "name": "List individual error notices for a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/notices",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List individual error notices for a fault"
+    },
+    {
+      "info": {
+        "name": "List users affected by a fault",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.honeybadger.io/v2/projects/:projectId/faults/:faultId/affected_users",
+        "params": [
+          {
+            "name": "projectId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "faultId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List users affected by a fault"
+    }
+  ],
+  "bundled": true
+}
