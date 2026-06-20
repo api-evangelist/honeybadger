@@ -11,7 +11,7 @@ description: >-
   check-ins, plus a Data API for accessing account data, both using HTTP
   Basic authentication.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Error Monitoring
   - Exception Tracking
