@@ -95,7 +95,7 @@ common:
     url: https://docs.honeybadger.io
   - type: Pricing
     url: https://www.honeybadger.io/plans/
-  - type: SignUp
+  - type: Signup
     url: https://app.honeybadger.io/users/sign_up
   - type: Blog
     url: https://www.honeybadger.io/blog/
@@ -110,7 +110,7 @@ common:
   - name: MCP Server
     url: https://github.com/honeybadger-io/honeybadger-mcp-server
     type: MCPServer
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.honeybadger.io/llms.txt
 maintainers:
   - FN: Kin Lane
