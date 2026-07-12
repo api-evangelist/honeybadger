@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/honeybadger-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: |-
+    HTTP Basic auth. Use your personal AUTH_TOKEN as the username and
+    leave the password empty: `-u AUTH_TOKEN:`. Required for the
+    Data API (`/v2/*`).
+  sources:
+  - openapi/honeybadger-openapi.yml
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: Project API key used by the Reporting API (`/v1/*`).
+  sources:
+  - openapi/honeybadger-openapi.yml

@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.honeybadger.io/security/
+url: https://www.honeybadger.io/security/
+certifications:
+- SOC 2
+- HIPAA
+- GDPR
+evidence:
+- source: https://www.honeybadger.io/security/
+  keywords:
+  - soc 2
+  - soc2
+  - hipaa
+  - compliance certification
+  - gdpr

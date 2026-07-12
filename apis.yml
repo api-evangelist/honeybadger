@@ -89,6 +89,12 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/asyncapi/honeybadger-webhooks-asyncapi.yml
 
 common:
+  - type: TrustCenter
+    url: security/honeybadger-trust-center.yml
+  - type: DomainSecurity
+    url: security/honeybadger-domain-security.yml
+  - type: Authentication
+    url: authentication/honeybadger-authentication.yml
   - type: Website
     url: https://www.honeybadger.io
   - type: Documentation
