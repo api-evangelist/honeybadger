@@ -89,6 +89,8 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/asyncapi/honeybadger-webhooks-asyncapi.yml
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/honeybadger-agentic-access.yml
   - type: TrustCenter
     url: security/honeybadger-trust-center.yml
   - type: DomainSecurity
