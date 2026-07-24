@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: Honeybadger Check In API
+  description: 'Honeybadger exposes two HTTP APIs. The Reporting API ingests
+
+    exceptions, deploys, check-ins, source maps, and events from
+
+    instrumented applications using a project API key in the `X-API-Key`
+
+    header. The Data API provides read/write access to projects, faults,
+
+    and reports using HTTP Basic auth with a personal auth token as the
+
+    username and empty password.
+
+    '
+  version: '2.0'
+  contact:
+    name: Honeybadger API Docs
+    url: https://docs.honeybadger.io/api/
+servers:
+- url: https://api.honeybadger.io
+  description: Honeybadger API
+security:
+- BasicAuth: []
+tags:
+- name: Check In
+paths:
+  /v1/check_in/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Submit a check-in for a scheduled task
+      operationId: submitCheckIn
+      security:
+      - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Check In
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic auth. Use your personal AUTH_TOKEN as the username and
+
+        leave the password empty: `-u AUTH_TOKEN:`. Required for the
+
+        Data API (`/v2/*`).
+
+        '
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Project API key used by the Reporting API (`/v1/*`).

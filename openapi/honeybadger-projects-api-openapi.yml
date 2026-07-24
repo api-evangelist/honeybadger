@@ -1,0 +1,440 @@
+openapi: 3.1.0
+info:
+  title: Honeybadger Check In Projects API
+  description: 'Honeybadger exposes two HTTP APIs. The Reporting API ingests
+
+    exceptions, deploys, check-ins, source maps, and events from
+
+    instrumented applications using a project API key in the `X-API-Key`
+
+    header. The Data API provides read/write access to projects, faults,
+
+    and reports using HTTP Basic auth with a personal auth token as the
+
+    username and empty password.
+
+    '
+  version: '2.0'
+  contact:
+    name: Honeybadger API Docs
+    url: https://docs.honeybadger.io/api/
+servers:
+- url: https://api.honeybadger.io
+  description: Honeybadger API
+security:
+- BasicAuth: []
+tags:
+- name: Projects
+paths:
+  /v2/projects:
+    get:
+      summary: List projects
+      operationId: listProjects
+      parameters:
+      - name: account_id
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+    post:
+      summary: Create a project
+      operationId: createProject
+      parameters:
+      - name: account_id
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+      tags:
+      - Projects
+  /v2/projects/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get a project
+      operationId: getProject
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+    put:
+      summary: Update a project
+      operationId: updateProject
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+    delete:
+      summary: Delete a project
+      operationId: deleteProject
+      responses:
+        '204':
+          description: Deleted
+      tags:
+      - Projects
+  /v2/projects/occurrences:
+    get:
+      summary: Count error occurrences across all projects
+      operationId: getOccurrencesAcrossProjects
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{id}/occurrences:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Count error occurrences for a project
+      operationId: getProjectOccurrences
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{id}/integrations:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List project integrations
+      operationId: listProjectIntegrations
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{id}/reports/notices_by_class:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Error counts grouped by exception class
+      operationId: reportNoticesByClass
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{id}/reports/notices_by_location:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Error counts grouped by location
+      operationId: reportNoticesByLocation
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{id}/reports/notices_by_user:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Error counts grouped by affected user
+      operationId: reportNoticesByUser
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{id}/reports/notices_per_day:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Error counts grouped by day
+      operationId: reportNoticesPerDay
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List faults
+      operationId: listFaults
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get a fault
+      operationId: getFault
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+    put:
+      summary: Update a fault
+      operationId: updateFault
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+    delete:
+      summary: Delete a fault
+      operationId: deleteFault
+      responses:
+        '204':
+          description: Deleted
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/summary:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Fault summary counts grouped by environment and status
+      operationId: getFaultSummary
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/occurrences:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get occurrence counts for a fault
+      operationId: getFaultOccurrences
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/pause:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Pause notifications for a fault
+      operationId: pauseFault
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/unpause:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Unpause a fault
+      operationId: unpauseFault
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/unpause:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Unpause all faults in a project
+      operationId: unpauseAllFaults
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/resolve:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Resolve all faults in a project
+      operationId: resolveAllFaults
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/link:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Link a fault to an external issue (GitHub, Pivotal, etc.)
+      operationId: linkFault
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/unlink:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Unlink a fault from its external issue
+      operationId: unlinkFault
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/notices:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List individual error notices for a fault
+      operationId: listFaultNotices
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+  /v2/projects/{projectId}/faults/{faultId}/affected_users:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: faultId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List users affected by a fault
+      operationId: listAffectedUsers
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Projects
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic auth. Use your personal AUTH_TOKEN as the username and
+
+        leave the password empty: `-u AUTH_TOKEN:`. Required for the
+
+        Data API (`/v2/*`).
+
+        '
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Project API key used by the Reporting API (`/v1/*`).

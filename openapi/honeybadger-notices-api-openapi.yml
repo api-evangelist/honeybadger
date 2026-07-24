@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Honeybadger Check In Notices API
+  description: 'Honeybadger exposes two HTTP APIs. The Reporting API ingests
+
+    exceptions, deploys, check-ins, source maps, and events from
+
+    instrumented applications using a project API key in the `X-API-Key`
+
+    header. The Data API provides read/write access to projects, faults,
+
+    and reports using HTTP Basic auth with a personal auth token as the
+
+    username and empty password.
+
+    '
+  version: '2.0'
+  contact:
+    name: Honeybadger API Docs
+    url: https://docs.honeybadger.io/api/
+servers:
+- url: https://api.honeybadger.io
+  description: Honeybadger API
+security:
+- BasicAuth: []
+tags:
+- name: Notices
+paths:
+  /v1/notices:
+    post:
+      summary: Report an exception
+      operationId: reportNotice
+      security:
+      - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notifier:
+                  type: object
+                error:
+                  type: object
+                  properties:
+                    class:
+                      type: string
+                    message:
+                      type: string
+                    backtrace:
+                      type: array
+                      items:
+                        type: object
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                    fingerprint:
+                      type: string
+                request:
+                  type: object
+                  properties:
+                    context:
+                      type: object
+                    component:
+                      type: string
+                    action:
+                      type: string
+                    url:
+                      type: string
+                    params:
+                      type: object
+                    session:
+                      type: object
+                    cgi_data:
+                      type: object
+                server:
+                  type: object
+                  properties:
+                    project_root:
+                      type: object
+                    environment_name:
+                      type: string
+                    hostname:
+                      type: string
+                    revision:
+                      type: string
+                    pid:
+                      type: integer
+                breadcrumbs:
+                  type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+        '403':
+          description: Invalid API key or deactivated account
+        '413':
+          description: Payload exceeds 256KB
+        '422':
+          description: Malformed payload
+        '429':
+          description: Rate limit exceeded
+      tags:
+      - Notices
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic auth. Use your personal AUTH_TOKEN as the username and
+
+        leave the password empty: `-u AUTH_TOKEN:`. Required for the
+
+        Data API (`/v2/*`).
+
+        '
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Project API key used by the Reporting API (`/v1/*`).
