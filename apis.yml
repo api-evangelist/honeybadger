@@ -11,7 +11,19 @@ description: >-
   check-ins, plus a Data API for accessing account data, both using HTTP
   Basic authentication.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/honeybadger.png
 tags:
   - Error Monitoring
   - Exception Tracking
@@ -25,69 +37,123 @@ created: '2026-05-11'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-  - aid: honeybadger:reporting-api
-    name: Honeybadger Reporting API
-    description: >-
-      Ingestion API for submitting exceptions, deploys, check-ins, source
-      maps, and events from instrumented applications to Honeybadger. Uses
-      a Project API Key as the authentication credential and accepts JSON
-      payloads over HTTPS.
-    humanURL: https://docs.honeybadger.io/api/
-    baseURL: https://api.honeybadger.io/v1
-    tags:
-      - Error Monitoring
-      - Exception Tracking
-      - Reporting API
-      - Ingestion
-    properties:
-      - type: Documentation
-        url: https://docs.honeybadger.io/api/
-  - aid: honeybadger:data-api
-    name: Honeybadger Data API
-    description: >-
-      REST API for reading and modifying account data such as projects,
-      faults, comments, teams, and integrations. Authenticated via HTTP
-      Basic auth using a Personal Authentication Token as the username.
-    humanURL: https://docs.honeybadger.io/api/getting-started/
-    baseURL: https://app.honeybadger.io
-    tags:
-      - Error Monitoring
-      - Data API
-      - HTTP Basic Auth
-      - Personal Authentication Token
-    properties:
-      - type: Documentation
-        url: https://docs.honeybadger.io/api/getting-started/
-  - aid: honeybadger:webhooks
-    name: Honeybadger Outbound Webhook Notifications
-    description: >-
-      Outbound webhook notification surface delivered by Honeybadger to
-      subscriber URLs configured via Project Settings > Alerts &
-      Integrations. Covers the generic Webhook integration's documented
-      event types (occurred, resolved, unresolved, assigned, commented,
-      rate_exceeded, deployed, check_in_missing, check_in_reporting,
-      down, up, cert_will_expire) plus the Slack and Microsoft Teams
-      chat-platform delivery channels.
-    humanURL: https://docs.honeybadger.io/guides/integrations/webhook/
-    baseURL: https://example.com
-    tags:
-      - Webhooks
-      - Notifications
-      - AsyncAPI
-      - Slack
-      - Microsoft Teams
-      - Event-Driven
-    properties:
-      - type: Documentation
-        url: https://docs.honeybadger.io/guides/integrations/webhook/
-      - type: Documentation
-        url: https://docs.honeybadger.io/guides/integrations/slack/
-      - type: Documentation
-        url: https://docs.honeybadger.io/guides/integrations/microsoft-teams/
-      - type: AsyncAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/asyncapi/honeybadger-webhooks-asyncapi.yml
-
+- aid: honeybadger:reporting-api
+  name: Honeybadger Reporting API
+  description: >-
+    Ingestion API for submitting exceptions, deploys, check-ins, source maps, and events from instrumented
+    applications to Honeybadger. Uses a Project API Key as the authentication credential and accepts JSON
+    payloads over HTTPS.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Error Monitoring
+  - Exception Tracking
+  - Reporting API
+  - Ingestion
+  properties:
+  - type: Documentation
+    url: https://docs.honeybadger.io/api/
+- aid: honeybadger:data-api
+  name: Honeybadger Data API
+  description: >-
+    REST API for reading and modifying account data such as projects, faults, comments, teams, and integrations.
+    Authenticated via HTTP Basic auth using a Personal Authentication Token as the username.
+  humanURL: https://docs.honeybadger.io/api/getting-started/
+  baseURL: https://app.honeybadger.io
+  tags:
+  - Error Monitoring
+  - Data API
+  - HTTP Basic Auth
+  - Personal Authentication Token
+  properties:
+  - type: Documentation
+    url: https://docs.honeybadger.io/api/getting-started/
+- aid: honeybadger:webhooks
+  name: Honeybadger Outbound Webhook Notifications
+  description: >-
+    Outbound webhook notification surface delivered by Honeybadger to subscriber URLs configured via Project
+    Settings > Alerts & Integrations. Covers the generic Webhook integration's documented event types
+    (occurred, resolved, unresolved, assigned, commented, rate_exceeded, deployed, check_in_missing, check_in_reporting,
+    down, up, cert_will_expire) plus the Slack and Microsoft Teams chat-platform delivery channels.
+  humanURL: https://docs.honeybadger.io/guides/integrations/webhook/
+  baseURL: https://example.com
+  tags:
+  - Webhooks
+  - Notifications
+  - AsyncAPI
+  - Slack
+  - Microsoft Teams
+  - Event-Driven
+  properties:
+  - type: Documentation
+    url: https://docs.honeybadger.io/guides/integrations/webhook/
+  - type: Documentation
+    url: https://docs.honeybadger.io/guides/integrations/slack/
+  - type: Documentation
+    url: https://docs.honeybadger.io/guides/integrations/microsoft-teams/
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/asyncapi/honeybadger-webhooks-asyncapi.yml
+- aid: honeybadger:honeybadger-check-in-api
+  name: Honeybadger Check In API
+  description: The Check In API from Honeybadger — 1 operation(s) for check in.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Check In
+  properties:
+  - type: OpenAPI
+    url: openapi/honeybadger-check-in-api-openapi.yml
+- aid: honeybadger:honeybadger-deploys-api
+  name: Honeybadger Deploys API
+  description: The Deploys API from Honeybadger — 1 operation(s) for deploys.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Deploys
+  properties:
+  - type: OpenAPI
+    url: openapi/honeybadger-deploys-api-openapi.yml
+- aid: honeybadger:honeybadger-events-api
+  name: Honeybadger Events API
+  description: The Events API from Honeybadger — 1 operation(s) for events.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/honeybadger-events-api-openapi.yml
+- aid: honeybadger:honeybadger-notices-api
+  name: Honeybadger Notices API
+  description: The Notices API from Honeybadger — 1 operation(s) for notices.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Notices
+  properties:
+  - type: OpenAPI
+    url: openapi/honeybadger-notices-api-openapi.yml
+- aid: honeybadger:honeybadger-projects-api
+  name: Honeybadger Projects API
+  description: The Projects API from Honeybadger — 21 operation(s) for projects.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/honeybadger-projects-api-openapi.yml
+- aid: honeybadger:honeybadger-source-maps-api
+  name: Honeybadger Source Maps API
+  description: The Source Maps API from Honeybadger — 1 operation(s) for source maps.
+  humanURL: https://docs.honeybadger.io/api/
+  baseURL: https://api.honeybadger.io/v1
+  tags:
+  - Source Maps
+  properties:
+  - type: OpenAPI
+    url: openapi/honeybadger-source-maps-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/honeybadger-agentic-access.yml
