@@ -1,0 +1,24 @@
+{
+  "provider": "honeybadger",
+  "sources": [
+    "honeybadger-check-in-api-openapi.yml",
+    "honeybadger-deploys-api-openapi.yml",
+    "honeybadger-events-api-openapi.yml",
+    "honeybadger-notices-api-openapi.yml",
+    "honeybadger-projects-api-openapi.yml",
+    "honeybadger-source-maps-api-openapi.yml"
+  ],
+  "outputs": [
+    "honeybadger-check-in-api-openapi.yml",
+    "honeybadger-deploys-api-openapi.yml",
+    "honeybadger-events-api-openapi.yml",
+    "honeybadger-notices-api-openapi.yml",
+    "honeybadger-projects-api-openapi.yml",
+    "honeybadger-source-maps-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
