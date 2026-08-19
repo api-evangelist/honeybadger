@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "id": "bc0e05b6-c97d-4f6e-b34e-f489a9fe4852",
+      "name": "Deploys",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "485d4e78-1e41-4039-a039-f01919cbbdd7",
+          "name": "Record a deploy",
+          "request": {
+            "name": "Record a deploy",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "deploys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c2d8df0c-d147-4dc6-96cd-9f70a90a0b26",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deploys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.honeybadger.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "772c1a30-a0b2-4ac9-85b9-df9f27ce6f56",
+    "name": "Honeybadger Check In Deploys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Honeybadger exposes two HTTP APIs. The Reporting API ingests\nexceptions, deploys, check-ins, source maps, and events from\ninstrumented applications using a project API key in the `X-API-Key`\nheader. The Data API provides read/write access to projects, faults,\nand reports using HTTP Basic auth with a personal auth token as the\nusername and empty password.\n\n\nContact Support:\n Name: Honeybadger API Docs",
+      "type": "text/plain"
+    }
+  }
+}

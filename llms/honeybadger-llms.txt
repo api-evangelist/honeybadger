@@ -1,0 +1,58 @@
+# Honeybadger.io
+
+> Honeybadger provides error tracking, uptime monitoring, logging, and application performance insights in one simple platform that helps developers understand and fix issues faster.
+
+Honeybadger hosts an MCP server, and there is nothing to install: point an MCP client at `https://mcp.honeybadger.io/mcp`. EU-region accounts: use `https://eu-mcp.honeybadger.io/mcp`.
+
+A connected agent can read and search errors, resolve and assign them, query Insights event data with BadgerQL, and manage check-ins, dashboards, and alarms. Instrumenting an application is not an MCP task: to add or configure a client library, read the language reference below.
+
+Claude Code:
+
+```bash
+claude mcp add --transport http honeybadger "https://mcp.honeybadger.io/mcp"
+```
+
+Clients configured by JSON file:
+
+```json
+{ "mcpServers": { "honeybadger": { "url": "https://mcp.honeybadger.io/mcp" } } }
+```
+
+Other clients, authorization, and running the server yourself for headless agents: see https://docs.honeybadger.io/resources/mcp.md.
+
+## Documentation Sets
+
+- [Abridged documentation](https://docs.honeybadger.io/llms-small.txt): a compact version of the documentation for Honeybadger.io, with non-essential content removed
+- [Complete documentation](https://docs.honeybadger.io/llms-full.txt): the full documentation for Honeybadger.io
+- [API reference](https://docs.honeybadger.io/_llms-txt/api-reference.txt): Documentation for the Honeybadger Data (REST) API and reporting APIs.
+- [Insights reference](https://docs.honeybadger.io/_llms-txt/insights-reference.txt): Documentation for Honeybadger Insights and the BadgerQL query language.
+- [Product reference](https://docs.honeybadger.io/_llms-txt/product-reference.txt): Documentation for Honeybadger's user interface (UI) and product features.
+- [ruby reference](https://docs.honeybadger.io/_llms-txt/ruby-reference.txt): Documentation for the Honeybadger Ruby client library (SDK) and platform.
+- [javascript reference](https://docs.honeybadger.io/_llms-txt/javascript-reference.txt): Documentation for the Honeybadger JavaScript client library (SDK) and platform.
+- [php reference](https://docs.honeybadger.io/_llms-txt/php-reference.txt): Documentation for the Honeybadger PHP client library (SDK) and platform.
+- [python reference](https://docs.honeybadger.io/_llms-txt/python-reference.txt): Documentation for the Honeybadger Python client library (SDK) and platform.
+- [elixir reference](https://docs.honeybadger.io/_llms-txt/elixir-reference.txt): Documentation for the Honeybadger Elixir client library (SDK) and platform.
+- [java reference](https://docs.honeybadger.io/_llms-txt/java-reference.txt): Documentation for the Honeybadger Java client library (SDK) and platform.
+- [go reference](https://docs.honeybadger.io/_llms-txt/go-reference.txt): Documentation for the Honeybadger Go client library (SDK) and platform.
+- [cocoa reference](https://docs.honeybadger.io/_llms-txt/cocoa-reference.txt): Documentation for the Honeybadger Cocoa client library (SDK) and platform.
+- [dotnet reference](https://docs.honeybadger.io/_llms-txt/dotnet-reference.txt): Documentation for the Honeybadger .NET/C# client library (SDK) and platform.
+- [crystal reference](https://docs.honeybadger.io/_llms-txt/crystal-reference.txt): Documentation for the Honeybadger Crystal client library (SDK) and platform.
+- [clojure reference](https://docs.honeybadger.io/_llms-txt/clojure-reference.txt): Documentation for the Honeybadger Clojure client library (SDK) and platform.
+- [other reference](https://docs.honeybadger.io/_llms-txt/other-reference.txt): Documentation for the Honeybadger Other platforms client library (SDK) and platform.
+
+## Notes
+
+- The complete documentation includes all content from the official documentation
+- The content is automatically generated from the same source as the official documentation
+
+## Optional
+
+- [Honeybadger MCP server](https://docs.honeybadger.io/resources/mcp.md): Connect an AI agent to Honeybadger over the Model Context Protocol: hosted endpoints, per-client setup, access levels, and self-hosting.
+- [BadgerQL instructions](https://docs.honeybadger.io/resources/llms/instructions/badgerql.txt): The BadgerQL language: grammar, type hints, built-in fields, statements, expression functions, and the rules for writing correct queries.
+- [Queries instructions](https://docs.honeybadger.io/resources/llms/instructions/queries.txt): Fundamentals for querying Honeybadger Insights: streams, time ranges, event-class filtering, and verifying field names exist before aggregating.
+- [Charts instructions](https://docs.honeybadger.io/resources/llms/instructions/charts.txt): Visualization views for Insights query results and the chart_config fields each view accepts.
+- [Dashboards instructions](https://docs.honeybadger.io/resources/llms/instructions/dashboards.txt): Insights dashboard structure: the dashboard object, widget types and their configs, grid layout, and the vis object.
+- [Alarms instructions](https://docs.honeybadger.io/resources/llms/instructions/alarms.txt): Insights alarms: alarm fields, trigger_config, states, evaluation timing, and query guidelines.
+- [Errors instructions](https://docs.honeybadger.io/resources/llms/instructions/errors.txt): The Honeybadger error model (faults and notices), lifecycle states, and the error search query language.
+- [Check-ins instructions](https://docs.honeybadger.io/resources/llms/instructions/checkins.txt): Check-in monitoring for scheduled processes: fields and schedule types, plan gating, lifecycle states, the report endpoint and payloads, and check-in events in Insights.
+- [AI agent instruction catalog](https://docs.honeybadger.io/resources/llms/instructions/index.json): Machine-readable list of all AI agent instructions with sizes, sha256 digests, and URLs.

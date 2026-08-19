@@ -1,0 +1,351 @@
+{
+  "item": [
+    {
+      "id": "e93ea9c8-b66e-481d-91c7-68065b87fca3",
+      "name": "Notices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be36874b-6db4-4356-b839-c5c91e65954e",
+          "name": "Report an exception",
+          "request": {
+            "name": "Report an exception",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "notices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notifier\": \"<object>\",\n  \"error\": {\n    \"class\": \"<string>\",\n    \"message\": \"<string>\",\n    \"backtrace\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fingerprint\": \"<string>\"\n  },\n  \"request\": {\n    \"context\": \"<object>\",\n    \"component\": \"<string>\",\n    \"action\": \"<string>\",\n    \"url\": \"<string>\",\n    \"params\": \"<object>\",\n    \"session\": \"<object>\",\n    \"cgi_data\": \"<object>\"\n  },\n  \"server\": {\n    \"project_root\": \"<object>\",\n    \"environment_name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"pid\": \"<integer>\"\n  },\n  \"breadcrumbs\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f152034b-9e3c-4335-bc8a-b2d450d11ab4",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notifier\": \"<object>\",\n  \"error\": {\n    \"class\": \"<string>\",\n    \"message\": \"<string>\",\n    \"backtrace\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fingerprint\": \"<string>\"\n  },\n  \"request\": {\n    \"context\": \"<object>\",\n    \"component\": \"<string>\",\n    \"action\": \"<string>\",\n    \"url\": \"<string>\",\n    \"params\": \"<object>\",\n    \"session\": \"<object>\",\n    \"cgi_data\": \"<object>\"\n  },\n  \"server\": {\n    \"project_root\": \"<object>\",\n    \"environment_name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"pid\": \"<integer>\"\n  },\n  \"breadcrumbs\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cb264fe-11ff-4279-9d45-00b86757b90f",
+              "name": "Invalid API key or deactivated account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notifier\": \"<object>\",\n  \"error\": {\n    \"class\": \"<string>\",\n    \"message\": \"<string>\",\n    \"backtrace\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fingerprint\": \"<string>\"\n  },\n  \"request\": {\n    \"context\": \"<object>\",\n    \"component\": \"<string>\",\n    \"action\": \"<string>\",\n    \"url\": \"<string>\",\n    \"params\": \"<object>\",\n    \"session\": \"<object>\",\n    \"cgi_data\": \"<object>\"\n  },\n  \"server\": {\n    \"project_root\": \"<object>\",\n    \"environment_name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"pid\": \"<integer>\"\n  },\n  \"breadcrumbs\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1fc4a76-2851-4ddc-84a1-39bd58eb875b",
+              "name": "Payload exceeds 256KB",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notifier\": \"<object>\",\n  \"error\": {\n    \"class\": \"<string>\",\n    \"message\": \"<string>\",\n    \"backtrace\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fingerprint\": \"<string>\"\n  },\n  \"request\": {\n    \"context\": \"<object>\",\n    \"component\": \"<string>\",\n    \"action\": \"<string>\",\n    \"url\": \"<string>\",\n    \"params\": \"<object>\",\n    \"session\": \"<object>\",\n    \"cgi_data\": \"<object>\"\n  },\n  \"server\": {\n    \"project_root\": \"<object>\",\n    \"environment_name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"pid\": \"<integer>\"\n  },\n  \"breadcrumbs\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "255ace09-4092-440e-a321-362edf34d60b",
+              "name": "Malformed payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notifier\": \"<object>\",\n  \"error\": {\n    \"class\": \"<string>\",\n    \"message\": \"<string>\",\n    \"backtrace\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fingerprint\": \"<string>\"\n  },\n  \"request\": {\n    \"context\": \"<object>\",\n    \"component\": \"<string>\",\n    \"action\": \"<string>\",\n    \"url\": \"<string>\",\n    \"params\": \"<object>\",\n    \"session\": \"<object>\",\n    \"cgi_data\": \"<object>\"\n  },\n  \"server\": {\n    \"project_root\": \"<object>\",\n    \"environment_name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"pid\": \"<integer>\"\n  },\n  \"breadcrumbs\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b3e7aa2-cd8c-40f6-ac12-c4416d912879",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notifier\": \"<object>\",\n  \"error\": {\n    \"class\": \"<string>\",\n    \"message\": \"<string>\",\n    \"backtrace\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fingerprint\": \"<string>\"\n  },\n  \"request\": {\n    \"context\": \"<object>\",\n    \"component\": \"<string>\",\n    \"action\": \"<string>\",\n    \"url\": \"<string>\",\n    \"params\": \"<object>\",\n    \"session\": \"<object>\",\n    \"cgi_data\": \"<object>\"\n  },\n  \"server\": {\n    \"project_root\": \"<object>\",\n    \"environment_name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"pid\": \"<integer>\"\n  },\n  \"breadcrumbs\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.honeybadger.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c56ee609-eeac-4c96-abc5-53c66c3a61eb",
+    "name": "Honeybadger Check In Notices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Honeybadger exposes two HTTP APIs. The Reporting API ingests\nexceptions, deploys, check-ins, source maps, and events from\ninstrumented applications using a project API key in the `X-API-Key`\nheader. The Data API provides read/write access to projects, faults,\nand reports using HTTP Basic auth with a personal auth token as the\nusername and empty password.\n\n\nContact Support:\n Name: Honeybadger API Docs",
+      "type": "text/plain"
+    }
+  }
+}
