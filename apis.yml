@@ -78,6 +78,13 @@ apis:
   humanURL: https://docs.honeybadger.io/guides/integrations/webhook/
   baseURL: https://example.com
   tags:
+  - Webhook
+  - Notification
+  - AsyncAPI
+  - Slack
+  - Microsoft Teams
+  - Event-Driven
+  tags_raw:
   - Webhooks
   - Notifications
   - AsyncAPI
@@ -100,6 +107,8 @@ apis:
   humanURL: https://docs.honeybadger.io/api/
   baseURL: https://api.honeybadger.io/v1
   tags:
+  - Check-in
+  tags_raw:
   - Check In
   properties:
   - type: OpenAPI
@@ -120,6 +129,8 @@ apis:
   humanURL: https://docs.honeybadger.io/api/
   baseURL: https://api.honeybadger.io/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -140,6 +151,8 @@ apis:
   humanURL: https://docs.honeybadger.io/api/
   baseURL: https://api.honeybadger.io/v1
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
