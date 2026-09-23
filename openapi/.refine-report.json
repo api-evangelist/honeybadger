@@ -1,12 +1,7 @@
 {
   "provider": "honeybadger",
   "sources": [
-    "honeybadger-check-in-api-openapi.yml",
-    "honeybadger-deploys-api-openapi.yml",
-    "honeybadger-events-api-openapi.yml",
-    "honeybadger-notices-api-openapi.yml",
-    "honeybadger-projects-api-openapi.yml",
-    "honeybadger-source-maps-api-openapi.yml"
+    "_original/honeybadger-openapi.yml"
   ],
   "outputs": [
     "honeybadger-check-in-api-openapi.yml",
@@ -19,6 +14,54 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "honeybadger-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "honeybadger-openapi.yml: tagged paths POST /v1/notices -> Notices",
+    "honeybadger-openapi.yml: tagged paths POST /v1/check_in/{id} -> Check In",
+    "honeybadger-openapi.yml: tagged paths POST /v1/deploys -> Deploys",
+    "honeybadger-openapi.yml: tagged paths POST /v1/source_maps -> Source Maps",
+    "honeybadger-openapi.yml: tagged paths POST /v1/events -> Events",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id} -> Projects",
+    "honeybadger-openapi.yml: tagged paths PUT /v2/projects/{id} -> Projects",
+    "honeybadger-openapi.yml: tagged paths DELETE /v2/projects/{id} -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/occurrences -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id}/occurrences -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id}/integrations -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id}/reports/notices_by_class -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id}/reports/notices_by_location -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id}/reports/notices_by_user -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{id}/reports/notices_per_day -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{projectId}/faults -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{projectId}/faults/{faultId} -> Projects",
+    "honeybadger-openapi.yml: tagged paths PUT /v2/projects/{projectId}/faults/{faultId} -> Projects",
+    "honeybadger-openapi.yml: tagged paths DELETE /v2/projects/{projectId}/faults/{faultId} -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{projectId}/faults/summary -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{projectId}/faults/{faultId}/occurrences -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects/{projectId}/faults/{faultId}/pause -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects/{projectId}/faults/{faultId}/unpause -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects/{projectId}/faults/unpause -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects/{projectId}/faults/resolve -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects/{projectId}/faults/{faultId}/link -> Projects",
+    "honeybadger-openapi.yml: tagged paths POST /v2/projects/{projectId}/faults/{faultId}/unlink -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{projectId}/faults/{faultId}/notices -> Projects",
+    "honeybadger-openapi.yml: tagged paths GET /v2/projects/{projectId}/faults/{faultId}/affected_users -> Projects",
+    "honeybadger-openapi.yml: declared missing tag: Check In",
+    "honeybadger-openapi.yml: declared missing tag: Deploys",
+    "honeybadger-openapi.yml: declared missing tag: Events",
+    "honeybadger-openapi.yml: declared missing tag: Notices",
+    "honeybadger-openapi.yml: declared missing tag: Projects",
+    "honeybadger-openapi.yml: declared missing tag: Source Maps",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "honeybadger-check-in-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "honeybadger-deploys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "honeybadger-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "honeybadger-notices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "honeybadger-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "honeybadger-source-maps-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

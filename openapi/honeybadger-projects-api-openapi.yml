@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Honeybadger Check In Projects API
+  title: Honeybadger Projects API
   description: 'Honeybadger exposes two HTTP APIs. The Reporting API ingests
 
     exceptions, deploys, check-ins, source maps, and events from
@@ -11,9 +11,7 @@ info:
 
     and reports using HTTP Basic auth with a personal auth token as the
 
-    username and empty password.
-
-    '
+    username and empty password.'
   version: '2.0'
   contact:
     name: Honeybadger API Docs
