@@ -181,6 +181,9 @@ apis:
   - type: OpenAPI
     url: openapi/honeybadger-source-maps-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/honeybadger-capability-edges.yml
+    name: Honeybadger Business Capability Map
   - type: AgenticAccess
     url: agentic-access/honeybadger-agentic-access.yml
   - type: TrustCenter
