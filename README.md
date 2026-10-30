@@ -1,4 +1,4 @@
-# Honeybadger (honeybadger)
+# Honeybadger
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,108 +66,142 @@
 
 Honeybadger is an application monitoring platform that combines exception tracking, uptime monitoring, cron and background job monitoring, and status pages into a single service for software developers and operations teams. The platform supports a wide range of languages and frameworks including Ruby, Rails, Python, Node.js, PHP, Elixir, Go, and JavaScript, and integrates with Slack, GitHub, PagerDuty, and other developer tools. Honeybadger exposes a Reporting API for ingesting errors, deploys, and check-ins, plus a Data API for accessing account data, both using HTTP Basic authentication.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/apis.yml)
+**Areas:** Error Monitoring · Exception Tracking · Application Performance Monitoring · Uptime Monitoring · Cron Monitoring · Observability
 
-## Scope
+## Honeybadger on APIs.io
 
-- **Type:** Index
+Everything profiled for Honeybadger is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/honeybadger/](https://apis.io/providers/honeybadger/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Error Monitoring
-- Exception Tracking
-- Application Performance Monitoring
-- Uptime Monitoring
-- Cron Monitoring
-- Observability
+- [Honeybadger Reporting API](https://apis.io/apis/honeybadger/reporting-api/) — Ingestion API for submitting exceptions, deploys, check-ins, source maps, and events from instrumented applications to Honeybadger. Uses a Project API Key…
+- [Honeybadger Data API](https://apis.io/apis/honeybadger/data-api/) — REST API for reading and modifying account data such as projects, faults, comments, teams, and integrations. Authenticated via HTTP Basic auth using a…
+- [Honeybadger Outbound Webhook Notifications](https://apis.io/apis/honeybadger/webhooks/) — Outbound webhook notification surface delivered by Honeybadger to subscriber URLs configured via Project Settings > Alerts & Integrations. Covers the…
+- [Honeybadger Check In API](https://apis.io/apis/honeybadger/honeybadger-check-in-api/) — The Check In API from Honeybadger — 1 operation(s) for check in.
+- [Honeybadger Deploys API](https://apis.io/apis/honeybadger/honeybadger-deploys-api/) — The Deploys API from Honeybadger — 1 operation(s) for deploys.
+- [Honeybadger Events API](https://apis.io/apis/honeybadger/honeybadger-events-api/) — The Events API from Honeybadger — 1 operation(s) for events.
+- [Honeybadger Notices API](https://apis.io/apis/honeybadger/honeybadger-notices-api/) — The Notices API from Honeybadger — 1 operation(s) for notices.
+- [Honeybadger Projects API](https://apis.io/apis/honeybadger/honeybadger-projects-api/) — The Projects API from Honeybadger — 21 operation(s) for projects.
+- [Honeybadger Source Maps API](https://apis.io/apis/honeybadger/honeybadger-source-maps-api/) — The Source Maps API from Honeybadger — 1 operation(s) for source maps.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Honeybadger Reporting API
+Event-driven and webhook contracts.
 
-Ingestion API for submitting exceptions, deploys, check-ins, source maps, and events from instrumented applications to Honeybadger. Uses a Project API Key as the authentication credential and accepts JSON payloads over HTTPS.
+- [Honeybadger Outbound Webhook Notifications](https://apis.io/asyncapis/honeybadger/honeybadger-webhooks-asyncapi/)
 
-- **Human URL:** [https://docs.honeybadger.io/api/](https://docs.honeybadger.io/api/)
-- **Base URL:** `https://api.honeybadger.io/v1`
+#### Event channels (3)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Error Monitoring
-- Exception Tracking
-- Reporting API
-- Ingestion
+- [microsoftTeams](https://apis.io/channels/honeybadger/microsoftteams/)
+- [slack](https://apis.io/channels/honeybadger/slack/)
+- [webhook](https://apis.io/channels/honeybadger/webhook/)
 
-#### Properties
+#### MCP servers (2)
 
-- [Documentation](https://docs.honeybadger.io/api/)
-- [Postman Collection](collections/honeybadger.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/honeybadger.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Model Context Protocol servers that expose the API to agents.
 
-### Honeybadger Data API
+- [honeybadger](https://apis.io/servers/honeybadger/honeybadger/)
+- [MCP Server](https://apis.io/servers/honeybadger/mcp-server/)
 
-REST API for reading and modifying account data such as projects, faults, comments, teams, and integrations. Authenticated via HTTP Basic auth using a Personal Authentication Token as the username.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.honeybadger.io/api/getting-started/](https://docs.honeybadger.io/api/getting-started/)
-- **Base URL:** `https://app.honeybadger.io`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Honeybadger Agentic Access](https://apis.io/agentic-access/honeybadger/honeybadger-agentic-access/)
 
-- Error Monitoring
-- Data API
-- HTTP Basic Auth
-- Personal Authentication Token
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.honeybadger.io/api/getting-started/)
-- [Postman Collection](collections/honeybadger.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/honeybadger.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Honeybadger API](https://apis.io/collections/honeybadger/open-honeybadger/)
+- [Honeybadger Check In API](https://apis.io/collections/honeybadger/open-honeybadger-check-in-api/)
+- [Honeybadger Check In Deploys API](https://apis.io/collections/honeybadger/open-honeybadger-deploys-api/)
+- [Honeybadger Check In Events API](https://apis.io/collections/honeybadger/open-honeybadger-events-api/)
+- [Honeybadger Check In Notices API](https://apis.io/collections/honeybadger/open-honeybadger-notices-api/)
+- [Honeybadger Check In Projects API](https://apis.io/collections/honeybadger/open-honeybadger-projects-api/)
+- [Honeybadger Check In Source Maps API](https://apis.io/collections/honeybadger/open-honeybadger-source-maps-api/)
 
-### Honeybadger Outbound Webhook Notifications
+#### Governance rules (1)
 
-Outbound webhook notification surface delivered by Honeybadger to subscriber URLs configured via Project Settings > Alerts & Integrations. Covers the generic Webhook integration's documented event types (occurred, resolved, unresolved, assigned, commented, rate_exceeded, deployed, check_in_missing, check_in_reporting, down, up, cert_will_expire) plus the Slack and Microsoft Teams chat-platform delivery channels.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://docs.honeybadger.io/guides/integrations/webhook/](https://docs.honeybadger.io/guides/integrations/webhook/)
-- **Base URL:** `https://example.com`
+- [Honeybadger — asyncapi rules](https://apis.io/rules/honeybadger/honeybadger-asyncapi-spectral-rules/)
 
-#### Tags
+#### Security (3)
 
-- Webhooks
-- Notifications
-- AsyncAPI
-- Slack
-- Microsoft Teams
-- Event-Driven
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Honeybadger Authentication](https://apis.io/security/honeybadger/honeybadger-authentication/)
+- [Honeybadger Domain Security](https://apis.io/security/honeybadger/honeybadger-domain-security/)
+- [Honeybadger Trust Center](https://apis.io/security/honeybadger/honeybadger-trust-center/)
 
-- [Documentation](https://docs.honeybadger.io/guides/integrations/webhook/)
-- [Documentation](https://docs.honeybadger.io/guides/integrations/slack/)
-- [Documentation](https://docs.honeybadger.io/guides/integrations/microsoft-teams/)
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/honeybadger/refs/heads/main/asyncapi/honeybadger-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/honeybadger.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/honeybadger.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.honeybadger.io)
 - [Documentation](https://docs.honeybadger.io)
 - [Pricing](https://www.honeybadger.io/plans/)
-- [Sign Up](https://app.honeybadger.io/users/sign_up)
 - [Blog](https://www.honeybadger.io/blog/)
-- [GitHub Organization](https://github.com/honeybadger-io)
-- [Git Hub  S D K](https://github.com/honeybadger-io/cli)
-- [Support](mailto:support@honeybadger.io)
-- [LinkedIn](https://www.linkedin.com/company/honeybadger-industries)
-- [M C P Server](https://github.com/honeybadger-io/honeybadger-mcp-server)
-- [L L Ms Txt](https://docs.honeybadger.io/llms.txt)
+- [GitHub](https://github.com/honeybadger-io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.4** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 54.3 |
+| Contract governance | 11.4 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 31.6 |
+
+**Agent readiness 44.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/honeybadger/](https://apis.io/providers/honeybadger/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Honeybadger: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/honeybadger/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
